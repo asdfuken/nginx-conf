@@ -6,7 +6,7 @@ require_relative 'compiler'
 
 
 def nginx_conf &block
-  repeats = %i(server location load_module fastcgi_param set include if_)
+  repeats = %i(server location load_module fastcgi_param set include if_ proxy_set_header listen)
   Compiler.new(replace_elems repeats)
       .compile replace_elems(block_is_hash(repeats, &block))
 end
